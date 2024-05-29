@@ -16,3 +16,15 @@ code {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .bg-custom-radial {
+    background: radial-gradient(circle at 18.7% 37.8%, rgb(250, 250, 250) 0%, rgb(225, 234, 238) 90%);
+  }
+}
+
+@layer utilities {
+  .bg-custom-radial2 {
+    background: linear-gradient(143.3deg, rgb(219, 179, 194) 100.1%, rgb(207, 3, 6) 10.9%);
+  }
+}

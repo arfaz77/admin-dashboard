@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
+import { FaCloudDownloadAlt } from "react-icons/fa";
+import { GrLinkPrevious,GrLinkNext } from "react-icons/gr";
 import { useParams } from "react-router-dom";
-import { IoMdDownload } from "react-icons/io";
+
 import { GiNextButton, GiPreviousButton } from "react-icons/gi";
 import moment from "moment";
 import {
@@ -307,15 +309,15 @@ console.log("live ",liveItem?.id,liveData)
  
 
   return (
-    <div>
+    <div className="bg-custom-radial">
       {liveItem?.event?.status !== "pause" ? (
         <div className="w-full ">
           {liveItem ? (
             <>
               <div className="py-10 mx-10 ">
           {/* Page header */}
-          <div className="md:flex md:items-start md:justify-between md:space-x-5">
-            <div className="flex items-center space-x-5">
+          <div className="grid grid-cols-3 items-center justify-center">
+            <div className="flex items-center space-x-5 border-2 border-black p-4 rounded-lg  w-fit bg-white">
               <div>
                 <h1 className="text-2xl font-bold text-gray-900">
                   Open Auction
@@ -327,9 +329,9 @@ console.log("live ",liveItem?.id,liveData)
                 <h1>Reg. No # <span className="font-bold">{liveItem?.registrationNumber}</span></h1>
               </div>
             </div>
-            <div className="bg-white px-4 py-5  sm:rounded-lg sm:px-6 border  border-gray-200 space-y-2">
-              <div className="flex  justify-between">
-                <div className="flex space-x-2">
+            <div className="   px-4 py-5  sm:rounded-lg sm:px-6 border-2 border-black space-y-2 w-fit place-content-center bg-white">
+              <div className=" justify-between">
+                <div className="grid grid-cols-2 items-center gap-2 ">
                   <h2 className="text-lg font-medium text-gray-900">
                     Start Price :
                   </h2>
@@ -339,7 +341,7 @@ console.log("live ",liveItem?.id,liveData)
                 </div>
               </div>
 
-              <div className="flex space-x-2">
+              <div className="grid grid-cols-2 items-center gap-2 ">
                 <h2 className="text-lg font-medium text-gray-900">
                   Current Bid Amount :
                 </h2>
@@ -349,12 +351,16 @@ console.log("live ",liveItem?.id,liveData)
               </div>
             </div>
             <div className="flex flex-col items-center space-y-2 mt-4 sm:mt-0">
-         <button className="p-2 outline-double outline-blue-500 bg-black rounded-full flex" onClick={()=>handleReport()}> <span className="text-white  pt-1   rounded-full font-bold">BID SHEET</span>  <IoMdDownload  size={30} style={{background: "blue", color: "white" }} className={circleClasses} /></button>
+         <button className="p-2 btn btn-outline  flex gap-2" onClick={()=>handleReport()}>
+          <span className="  font-bold">
+         BID SHEET</span>  <FaCloudDownloadAlt  className="h-8 w-8" /></button>
               {CountdownTimer(SecondsLeft())}
               <div className="flex justify-end space-x-2">
-            <button className="p-2 bg-red-700 outline-double outline-blue-500 text-white  rounded-full font-bold flex" onClick={()=>handlePreviousVehicle()} ><GiPreviousButton size={25} style={{background: "white", color: "red" }}className={circleClasses}/><span>PREV</span> </button>
+            <button className="p-2 bg-red-700 btn text-white   font-bold flex gap-2 text-lg" 
+            onClick={()=>handlePreviousVehicle()} ><GrLinkPrevious className="h-7 w-7"/><span>PREV</span> </button>
        
-              <button className="p-2 bg-blue-700 outline-double outline-red-500 text-white  rounded-full font-bold flex justify-between" onClick={()=>handleNextVehicle()} >NEXT <GiNextButton size={25} style={{background: "white", color: "blue" }} className={circleClasses} /></button>
+              <button className="p-2 bg-blue-700 btn text-lg text-white   font-bold flex justify-between gap-2"
+               onClick={()=>handleNextVehicle()} >NEXT <GrLinkNext className="h-7 w-7"/></button>
          </div>
             </div>
           </div>
@@ -459,7 +465,7 @@ function CountdownTimer(hhmmss) {
 
   return (
     <div className="w-72 text-indigo-500">
-      <div className="text-center text-md font-bold ">Vehicle Live Time</div>
+      <div className="text-center text-md font-bold  capitalize">Vehicle Live Time</div>
       <div className="text-2xl text-center flex w-full items-center justify-center">
         <div className="w-24 mx-1 p-2">
           <div className="font-bold text-md leading-none">{timeArray[0]}</div>
